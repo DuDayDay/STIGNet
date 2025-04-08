@@ -39,8 +39,8 @@ def plot_confusion_matrix(y_true, y_pred, labels, normalize=False):
     plt.show()
 
 def main():
-    data_path ='data/ahu-origin/save'
-    batch_size = 16
+    data_path ='save'
+    batch_size = 24
     dataset = MSRAction3D(
         root=data_path,
     )

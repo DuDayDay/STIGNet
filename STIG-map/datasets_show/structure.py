@@ -3,7 +3,7 @@ import sys
 from PySide2 import QtWidgets, QtCore
 from PySide2.QtCore import Qt, QTimer, QUrl
 from PySide2.QtUiTools import QUiLoader
-from datasets_show.point_clouds_density import compute_density,create_plot_with_cluster_selection
+from point_clouds_density import compute_density,create_plot_with_cluster_selection
 from PySide2.QtCore import QStringListModel
 import os
 import re
@@ -20,12 +20,12 @@ from PySide2.QtUiTools import QUiLoader
 from io import BytesIO
 import matplotlib.pyplot as plt
 from sklearn.neighbors import NearestNeighbors
-from datasets_show.points_track import pixelate_point_cloud_fixed_ratio
+from points_track import pixelate_point_cloud_fixed_ratio
 import matplotlib.cm as cm
-from datasets_show.point_sample import farthest_point_sampling, plot_sphere
+from point_sample import farthest_point_sampling, plot_sphere
 from sympy.abc import q
 from PySide2.QtWebEngineWidgets import QWebEngineView
-from datasets_show.point_activate import compute_multiframe_activity_with_displacement,map_activity_to_plotly_colors
+from point_activate import compute_multiframe_activity_with_displacement,map_activity_to_plotly_colors
 import plotly.graph_objs as go
 from collections import defaultdict
 def project_point_cloud(point_cloud):

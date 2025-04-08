@@ -66,8 +66,8 @@ def adjust_boxes(seg_point_cloud,SAMPLE_NUM,output_dir):
     print('Saved-' + filename)
 
 
-path = 'data/ahu-origin/test_already'
-save_path = 'data/ahu-origin/save'
+path = 'raw-ahu'
+save_path = 'save'
 class_path = os.listdir(path)
 counter = {}
 SAMPLE_NUM = 256
@@ -83,11 +83,16 @@ for class_name in class_path:
         class_type, _ = parse_xml(xml_file)
         if class_name != 'data':
             num = counter.get(class_type, 0)
-            filename = 'a' + f"{int(class_type):02d}" + '_e' + f"{num:02d}" + '_sdepth'
+            if int(class_type) <=3:
+                filename = 'a' + f"{int(class_type):02d}" + '_e' + f"{num:02d}" + '_sdepth'
+            else:
+                filename = 'a' + f"{int(class_type)-1:02d}" + '_e' + f"{num:02d}" + '_sdepth'
             counter[class_type] = num + 1
             seg_point_cloud, _ = read_data(points, labels)
             adjust_boxes(seg_point_cloud, SAMPLE_NUM, save_path)
         if class_name == 'data' and int(class_type) <= 3:
+            if int(class_type) == 3:
+                class_type = '9'
             num = counter.get(class_type, 0)
             filename = 'a' + f"{int(class_type):02d}" + '_e' + f"{num:02d}" + '_sdepth'
             counter[class_type] = num + 1
